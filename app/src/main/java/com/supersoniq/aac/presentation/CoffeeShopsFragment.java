@@ -19,7 +19,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.supersoniq.aac.R;
 import com.supersoniq.aac.model.CoffeeShop;
 import com.supersoniq.aac.model.Place;
@@ -46,9 +45,13 @@ public class CoffeeShopsFragment extends Fragment implements OnMapReadyCallback,
     private RecyclerView coffeeShopsList;
     @NonNull
     private FrameLayout progress;
+    @Nullable
     private GoogleMap googleMap;
+    @Nullable
     private GoogleApiClient mGoogleApiClient;
+    @Nullable
     private Location mLastLocation;
+    @Nullable
     private FusedLocationProviderClient fusedLocationClient;
 
     @Nullable
@@ -63,10 +66,15 @@ public class CoffeeShopsFragment extends Fragment implements OnMapReadyCallback,
         progress = findById(view, R.id.progress);
         coffeeShopsList.setLayoutManager(new LinearLayoutManager(getContext()));
         coffeeShopsList.setAdapter(coffeeShopsAdapter);
+        initMap();
+        observeViewModel();
+        model.init();
+        return view;
+    }
 
+    private void observeViewModel() {
         model.observeCoffeeShops().observe(this, coffeeShops ->
                 coffeeShopsAdapter.submitList(coffeeShops));
-
         model.observeProgress().observe(this, bool -> {
             if (bool != null && bool) {
                 progress.setVisibility(View.VISIBLE);
@@ -74,14 +82,14 @@ public class CoffeeShopsFragment extends Fragment implements OnMapReadyCallback,
                 progress.setVisibility(View.GONE);
             }
         });
-        model.init();
+    }
 
+    private void initMap() {
         final SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
-
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(getContext())
                     .addConnectionCallbacks(this)
@@ -89,8 +97,6 @@ public class CoffeeShopsFragment extends Fragment implements OnMapReadyCallback,
                     .addApi(LocationServices.API)
                     .build();
         }
-
-        return view;
     }
 
     @Override
@@ -109,18 +115,21 @@ public class CoffeeShopsFragment extends Fragment implements OnMapReadyCallback,
 
     @Override
     public void onStart() {
-        mGoogleApiClient.connect();
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.connect();
+        }
         super.onStart();
     }
 
     public void onStop() {
-        mGoogleApiClient.disconnect();
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.disconnect();
+        }
         super.onStop();
     }
 
-
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
+    public void onConnected(@Nullable final Bundle bundle) {
         if (checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && checkSelfPermission(getContext(),
                 Manifest.permission.ACCESS_COARSE_LOCATION) !=
@@ -130,27 +139,28 @@ public class CoffeeShopsFragment extends Fragment implements OnMapReadyCallback,
                     shouldShowRequestPermissionRationale(
                             Manifest.permission.ACCESS_COARSE_LOCATION)) {
 //                Toast.makeText(App.getAppContext(), "Необходимо разрешение для установления вашего местонахождения.", Toast.LENGTH_LONG).show();
-                requestPermissions(
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 
             } else {
-                requestPermissions(
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
             }
         } else {
-            getMyLocation();
+            findMyLocation();
         }
     }
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(final int requestCode,
+                                           @NonNull final String permissions[],
+                                           final int[] grantResults) {
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    getMyLocation();
+                    findMyLocation();
                 } else {
                 }
                 break;
@@ -160,13 +170,15 @@ public class CoffeeShopsFragment extends Fragment implements OnMapReadyCallback,
         }
     }
 
-    public void getMyLocation() {
+    public void findMyLocation() {
         if (checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) !=
                 PackageManager.PERMISSION_GRANTED && checkSelfPermission(getContext(),
                 Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        if (fusedLocationClient == null) {
+            fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        }
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(getActivity(), location -> {
                     if (location != null && googleMap != null) {
@@ -177,22 +189,15 @@ public class CoffeeShopsFragment extends Fragment implements OnMapReadyCallback,
                                         mLastLocation.getLongitude()), 14f));
                     }
                 });
-//        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-//        if (mLastLocation != null && googleMap != null) {
-//            googleMap.setMyLocationEnabled(true);
-//            googleMap.moveCamera(CameraUpdateFactory
-//                    .newLatLngZoom(new LatLng(mLastLocation.getLatitude(),
-//                                    mLastLocation.getLongitude()), 14f));
-//        }
     }
 
     @Override
-    public void onConnectionSuspended(int i) {
+    public void onConnectionSuspended(final int i) {
 
     }
 
     @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+    public void onConnectionFailed(@NonNull final ConnectionResult connectionResult) {
 
     }
 }
