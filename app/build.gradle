@@ -29,8 +29,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "androidx.coordinatorlayout:coordinatorlayout:$appcompat_version"
+    implementation "androidx.appcompat:appcompat:1.1.0-beta01"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01"
     implementation "androidx.constraintlayout:constraintlayout:1.1.3"
     implementation "com.google.android.material:material:1.0.0"
 
@@ -43,9 +43,9 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    implementation "com.google.android.gms:play-services-maps:17.0.0"
-    implementation "com.google.android.gms:play-services-location:17.0.0"
-    implementation "com.google.android.gms:play-services-places:17.0.0"
+    implementation "com.google.android.gms:play-services-maps:$google_services"
+    implementation "com.google.android.gms:play-services-location:$google_services"
+    implementation "com.google.android.gms:play-services-places:$google_services"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.3.0-alpha01'
