@@ -100,25 +100,8 @@ public class CoffeeShop {
         return url;
     }
 
-    public CoffeeShop(final long id, @NonNull final String title) {
-
+    public CoffeeShop() {
     }
-
-    @NonNull
-    public static List<CoffeeShop> testShops(String response) {
-        final List<CoffeeShop> shops = new ArrayList<>();
-        if (response == null) {
-            shops.add(new CoffeeShop(1, "SKURATOV"));
-            shops.add(new CoffeeShop(2, "STARBUCKS"));
-            shops.add(new CoffeeShop(3, "COFIX"));
-        } else {
-            for (int i = 0; i < response.length() - 20; i += 20) {
-                shops.add(new CoffeeShop(i, response.substring(i, i + 20)));
-            }
-        }
-        return shops;
-    }
-
 
     @Nullable
     public static List<CoffeeShop> getCoffeeShopsFromAssets(@NonNull final AssetManager asset) {
