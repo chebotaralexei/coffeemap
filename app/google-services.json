@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "971786296806",
+    "firebase_url": "https://test-821e0.firebaseio.com",
+    "project_id": "test-821e0",
+    "storage_bucket": "test-821e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971786296806:android:22a0160f59bc56cc",
+        "android_client_info": {
+          "package_name": "com.supersoniq.aac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971786296806-s4bld1h3de8lne1okabqou9e22ddap3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcu_pJ7Q95mr0k3d_B1mWhyyKxqsbXQ8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971786296806-s4bld1h3de8lne1okabqou9e22ddap3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971786296806:android:320c501f589effb1",
+        "android_client_info": {
+          "package_name": "ru.kingbird.sloncomfort"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971786296806-s4bld1h3de8lne1okabqou9e22ddap3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcu_pJ7Q95mr0k3d_B1mWhyyKxqsbXQ8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971786296806-s4bld1h3de8lne1okabqou9e22ddap3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971786296806:android:a90abcea033b4d4b",
+        "android_client_info": {
+          "package_name": "vxbvbnc.hgj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971786296806-s4bld1h3de8lne1okabqou9e22ddap3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcu_pJ7Q95mr0k3d_B1mWhyyKxqsbXQ8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971786296806-s4bld1h3de8lne1okabqou9e22ddap3r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

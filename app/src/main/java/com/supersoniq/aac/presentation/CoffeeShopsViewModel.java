@@ -1,10 +1,11 @@
 package com.supersoniq.aac.presentation;
 
 import com.android.volley.Request;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.supersoniq.aac.App;
 import com.supersoniq.aac.model.CoffeeShop;
 
-import java.util.Collections;
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
@@ -19,12 +20,10 @@ public class CoffeeShopsViewModel extends ViewModel {
         progressLiveData.postValue(true);
 
         request = App.INSTANCE.getServerApi().getCoffeeShops(response -> {
-                    final List<CoffeeShop> data = CoffeeShop.getCoffeeShopsFromAssets(App.INSTANCE.getAssets());
-                    coffeeShopsLiveData.postValue(data == null ? Collections.EMPTY_LIST : data);
+                    coffeeShopsLiveData.postValue(new Gson().fromJson(response, new TypeToken<List<CoffeeShop>>() {}.getType()));
                     progressLiveData.postValue(false);
                 },
                 error -> {
-                    coffeeShopsLiveData.postValue(Collections.singletonList(new CoffeeShop(10000, error.getLocalizedMessage())));
                     progressLiveData.postValue(false);
                 });
     }

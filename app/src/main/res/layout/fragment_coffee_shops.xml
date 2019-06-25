@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/progress"
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-
-    </FrameLayout>
+        android:layout_height="match_parent"/>
 
     <include
+        layout="@layout/bottom_sheet_coffee_shops"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        layout="@layout/bottom_sheet_coffee_shops"
         app:behavior_hideable="false"
         app:behavior_peekHeight="?attr/actionBarSize"
         app:layout_behavior="@string/bottom_sheet_behavior"/>
