@@ -10,21 +10,44 @@ public class Place {
 
     @SerializedName("address")
     @Expose
-    public String address;
+    private String address;
     @SerializedName("coordinates")
     @Expose
-    public Coordinates coordinates;
+    private Coordinates coordinates;
     @SerializedName("id")
     @Expose
-    public String id;
+    private String id;
     @SerializedName("note")
     @Expose
-    public String note;
+    private String note;
     @SerializedName("shop")
     @Expose
-    public String shop;
+    private String shop;
     @SerializedName("time")
     @Expose
-    public String time;
+    private String time;
 
+    public String getAddress() {
+        return address;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public String getShop() {
+        return shop;
+    }
+
+    public String getTime() {
+        return time;
+    }
 }

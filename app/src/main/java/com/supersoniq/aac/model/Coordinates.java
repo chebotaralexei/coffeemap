@@ -7,9 +7,16 @@ public class Coordinates {
 
     @SerializedName("x")
     @Expose
-    public Float x;
+    private Float x;
     @SerializedName("y")
     @Expose
-    public Float y;
+    private Float y;
 
+    public Float getX() {
+        return x;
+    }
+
+    public Float getY() {
+        return y;
+    }
 }
