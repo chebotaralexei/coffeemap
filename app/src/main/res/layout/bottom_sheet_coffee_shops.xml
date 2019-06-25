@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/background"
@@ -11,7 +12,9 @@
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"/>
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/background"
+            app:title="@string/coffee_map"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
@@ -22,6 +25,9 @@
             android:id="@+id/coffee_shops_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:clipToPadding="false"
             android:scrollbars="vertical"/>
 
         <FrameLayout

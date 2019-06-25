@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">AAC</string>
+    <string name="app_name">Кофейная карта Москвы</string>
+    <string name="coffee_map">Кофейная карта</string>
 </resources>

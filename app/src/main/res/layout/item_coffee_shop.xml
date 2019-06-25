@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textColor="#000"
-        android:id="@+id/coffee_shop_title"
-        android:textSize="16sp"/>
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingLeft="16dp"
+              android:paddingTop="16dp"
+              android:paddingRight="16dp">
 
     <TextView
+        android:id="@+id/coffee_shop_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp"
+        android:fontFamily="@font/robotomedium"
+        android:textColor="#000"
+        android:textSize="20sp"
+        tools:text="ДаблБи"/>
+
+    <TextView
         android:id="@+id/coffee_shop_description"
-        android:textSize="12sp"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="19,8км - Откроется в 8:00 - 100-179 Р"
+        android:textSize="12sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"/>
 
 </LinearLayout>

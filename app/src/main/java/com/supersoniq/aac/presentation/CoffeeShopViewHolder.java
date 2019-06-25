@@ -22,6 +22,5 @@ public class CoffeeShopViewHolder extends RecyclerView.ViewHolder {
 
     public void bindTo(@NonNull final CoffeeShop item) {
         titleView.setText(item.getName());
-        descriptionView.setText(item.getDescription());
     }
 }
