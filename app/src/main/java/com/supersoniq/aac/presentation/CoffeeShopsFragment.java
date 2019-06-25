@@ -6,15 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.android.volley.toolbox.Volley;
-import com.supersoniq.aac.R;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.supersoniq.aac.R;
+
+import static com.supersoniq.aac.Utils.findById;
 
 public class CoffeeShopsFragment extends Fragment {
 
@@ -35,8 +36,8 @@ public class CoffeeShopsFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_coffee_shops, container, false);
         model = ViewModelProviders.of(this).get(CoffeeShopsViewModel.class);
         coffeeShopsAdapter = new CoffeeShopsAdapter();
-        coffeeShopsList = view.findViewById(R.id.coffee_shops_list);
-        progress = view.findViewById(R.id.progress);
+        coffeeShopsList = findById(view, R.id.coffee_shops_list);
+        progress = findById(view, R.id.progress);
         coffeeShopsList.setLayoutManager(new LinearLayoutManager(getContext()));
         coffeeShopsList.setAdapter(coffeeShopsAdapter);
 

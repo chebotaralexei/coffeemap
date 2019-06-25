@@ -1,16 +1,22 @@
 package com.supersoniq.aac;
 
 import android.content.res.AssetManager;
+import android.view.View;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 public class Utils {
+
+    private Utils() {
+        //no instance
+    }
 
     @Nullable
     public static String loadAssetTextAsString(@NonNull final String name, @NonNull final AssetManager asset) {
@@ -42,4 +48,9 @@ public class Utils {
         }
         return null;
     }
+
+    public static <T extends View> T findById(View root, @IdRes int id) {
+        return root.findViewById(id);
+    }
+
 }
