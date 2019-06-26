@@ -50,7 +50,7 @@ public class CoffeeNetwork {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("coffeeShops")
+    @SerializedName("places")
     @Expose
     private List<CoffeeShop> coffeeShops = null;
     @SerializedName("stuff")

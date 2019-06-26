@@ -23,6 +23,7 @@ public class CoffeeShopsViewModel extends ViewModel {
 
         request = App.INSTANCE.getServerApi().getCoffeeShops(response -> {
                     coffeeShopsLiveData.postValue(new Gson().fromJson(response, new TypeToken<List<CoffeeNetwork>>() {}.getType()));
+//                    coffeeShopsLiveData.postValue(CoffeeNetwork.getCoffeeShopsFromAssets(App.INSTANCE.getAssets()));
                     progressLiveData.postValue(false);
                 },
                 error -> {
