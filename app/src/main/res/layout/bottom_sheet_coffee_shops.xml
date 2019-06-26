@@ -10,11 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/background"
-            app:title="@string/coffee_map"/>
+            android:text="@string/coffee_map"
+            android:paddingLeft="16dp"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_black"
+            android:textColor="#000"
+            />
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout

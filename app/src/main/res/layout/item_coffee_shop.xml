@@ -12,7 +12,7 @@
         android:id="@+id/coffee_shop_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_black"
         android:textColor="#000"
         android:textSize="20sp"
         tools:text="ДаблБи"/>

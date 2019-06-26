@@ -4,15 +4,19 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.supersoniq.aac.R;
-import com.supersoniq.aac.model.CoffeeShop;
+import com.supersoniq.aac.model.CoffeeNetwork;
+import com.supersoniq.aac.utils.Action1;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 
-class CoffeeShopsAdapter extends ListAdapter<CoffeeShop, CoffeeShopViewHolder> {
+class CoffeeShopsAdapter extends ListAdapter<CoffeeNetwork, CoffeeShopViewHolder> {
 
-    protected CoffeeShopsAdapter() {
-        super(CoffeeShop.DIFF_CALLBACK);
+    private Action1<CoffeeNetwork> listener;
+
+    public CoffeeShopsAdapter(@NonNull final Action1<CoffeeNetwork> listener) {
+        super(CoffeeNetwork.DIFF_CALLBACK);
+        this.listener = listener;
     }
 
     @NonNull
@@ -21,7 +25,7 @@ class CoffeeShopsAdapter extends ListAdapter<CoffeeShop, CoffeeShopViewHolder> {
                                                    final int viewType) {
         return new CoffeeShopViewHolder(LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.item_coffee_shop, parent, false));
+                .inflate(R.layout.item_coffee_shop, parent, false), listener);
     }
 
     @Override
