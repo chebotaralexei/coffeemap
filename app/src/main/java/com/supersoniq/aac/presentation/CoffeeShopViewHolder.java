@@ -7,6 +7,8 @@ import com.supersoniq.aac.R;
 import com.supersoniq.aac.model.CoffeeNetwork;
 import com.supersoniq.aac.utils.Action1;
 
+import java.text.DecimalFormat;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +27,8 @@ public class CoffeeShopViewHolder extends RecyclerView.ViewHolder {
 
     public void bindTo(@NonNull final CoffeeNetwork item) {
         titleView.setText(item.getName());
+        descriptionView.setText(String.valueOf(new DecimalFormat("##.## км")
+                .format(item.getCoffeeShops().get(0).getDistance())));
         itemView.setOnClickListener(view -> listener.call(item));
     }
 }

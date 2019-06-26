@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class CoffeeShop {
 
+
     public CoffeeShop() {
     }
 
@@ -26,6 +27,10 @@ public class CoffeeShop {
     @SerializedName("time")
     @Expose
     private String time;
+    @SerializedName("distance")
+    @Expose
+    private double distance;
+
 
     public String getAddress() {
         return address;
@@ -49,5 +54,13 @@ public class CoffeeShop {
 
     public String getTime() {
         return time;
+    }
+
+    public void setDistanse(double distance) {
+        this.distance = distance;
+    }
+
+    public double getDistance() {
+        return distance;
     }
 }

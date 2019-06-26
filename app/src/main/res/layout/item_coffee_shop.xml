@@ -21,7 +21,7 @@
         android:id="@+id/coffee_shop_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="19,8км - Откроется в 8:00 - 100-179 Р"
+        tools:text="19,8км - Откроется в 8:00 - 100-179 Р"
         android:textSize="12sp"/>
 
     <View

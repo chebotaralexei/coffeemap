@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.supersoniq.aac.R;
 import com.supersoniq.aac.model.CoffeeShop;
+import com.supersoniq.aac.utils.Haversine;
 import com.supersoniq.aac.utils.Utils;
 import com.supersoniq.aac.model.CoffeeNetwork;
 
@@ -222,13 +223,17 @@ public class CoffeeShopsFragment extends Fragment implements
         }
     }
 
-    private void addMarker(@NonNull final CoffeeNetwork coffeeNetwork, @NonNull final CoffeeShop coffeeShop, @NonNull final GoogleMap googleMap) {
+    private void addMarker(@NonNull final CoffeeNetwork coffeeNetwork,
+                           @NonNull final CoffeeShop coffeeShop,
+                           @NonNull final GoogleMap googleMap) {
         final LatLng coffeeCoords = new LatLng(coffeeShop.getCoordinates().getX(),
                 coffeeShop.getCoordinates().getY());
         final Marker marker  = googleMap.addMarker(new MarkerOptions().position(coffeeCoords).title(coffeeNetwork.getName()));
         marker.setTag(coffeeNetwork);
         marker.setIcon(BitmapDescriptorFactory
                 .fromBitmap(Utils.getBitmapFromVectorDrawable(getActivity(), R.drawable.ic_circle_marker)));
+        coffeeShop.setDistanse(Haversine.distance(mLastLocation.getLatitude(),
+                mLastLocation.getLongitude(), coffeeCoords.latitude, coffeeCoords.longitude));
     }
 
 
